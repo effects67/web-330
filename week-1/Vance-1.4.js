@@ -22,41 +22,43 @@ console.log(header.display("Exercise 1.4", "Gabriel", "Vance", "Creates and call
 
 // start program
 
-//con  classes with parameters
+// con  classes with parameters
 
 function Car(model){
     this.model=model;
 }
 //prototype function start
 Car.prototype.start=function(){
-        console.log("Car added to the racetrack!");
-    }
+    console.log("Car added to the racetrack!");
+}
 
 
 function Truck(model, year){
     this.model=model;
     this.year=year;
 }
-    Truck.prototype.start=function(){
-        console.log("Truck added to the racetrack!");
-
+Truck.prototype.start=function()
+{
+    console.log("Truck added to the racetrack!");
 }
 
-function Jeep(model, year, color){
+function Jeep(model, year, color)
+{
     this.model=model;
     this.year=year;
     this.color=color;
 }
-    Jeep.prototype.start=function(){
-        console.log("Jeep added to the racetrack!");
+Jeep.prototype.start=function()
+{
+    console.log("Jeep added to the racetrack!");
 }
 
-
 // empty racetrack array
-var racetrack= [];
+var racetrack=[];
 
 
 //driveIt function
+
 function driveIt(vehicle) 
 {
    vehicle.start();
@@ -64,20 +66,22 @@ function driveIt(vehicle)
     }
 
 // vehicle objects
-var honda = new Car("Accord");
-var monster = new Truck("Big","2018");
-var cherokee =new Jeep("Cherokee","2018","red");
+var honda= new Car("Accord");
+var monster= new Truck("Monster","2018");
+var cherokee=new Jeep("Cherokee","2018","red");
+
+console.log("");
 
 
 //vehicle classes
-driveIt(Car);
-driveIt(Jeep);
-driveIt(Truck);
+driveIt(honda);
+driveIt(monster);
+driveIt(cherokee);
 
 //display racetrack
-console.log("\n -- Added to the racetrack --")
+console.log('\n -- Added to the racetrack --')
 for (var k=0;k<racetrack.length;k++){
-        console.log(racetrack[k].constructor.name+":"+racetrack[k].model);
+        console.log(racetrack[k].constructor.name+": "+racetrack[k].model);
     }
 
 
