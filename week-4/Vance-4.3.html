@@ -4,20 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Assignment name</title>
-
+<!-- jQuery does not include built in functions for put/delete ops
+-->
+<!---->
     <!-- jQuery reference -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
-        <button id="button"> GOOD LUCK! </button>
+    <h4> HTTP Delete Request</h4>
+    <!--button#delete1-->
+        <button id="delete1">Delete Security User</button>
 
 <script>
 
-
+    // find delete element = #delete1. create click event
     $(function() {
 
+
+
+    $('#delete1').click(function() {
+        // ajax object literal
+        //need data type, specify type, data format
+        $.ajax({
+            url: "http://httpbin.org/delete",
+            dataType:"json",
+            type:"DELETE",
+            data:{username:"admin", password:"secret", email:"youremail@email.com"},
+            //callback function what do when with success
+            success:function(data,status){
+                console.log('Username: '+ data.form.username+'\nPassword: '+ data.form.password + '\nEmail: '+ data.form.email +
+                "\nStatus: " + status);
+            }
+        })
+
     });
+});
+
 
 </script>
 
