@@ -3,17 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercise 5.2 - The Proxy Pattern</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- jquery Reference Library -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
 <body>
+    <nav class="navbar navbar-dark bg">
+        <a href="#" class="navbar-brand">Home</a>
+    </nav>
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Exercise 5.2 - Proxy Pattern</h2>
+                <button class="btn btn-danger" id="btnPreviewProxy">Preview Proxy</button>
+                <br/>
+                <br/>
+                <span id="spanProxyResults"></span>
+            </div>
+        </div>
+    </div>
 
 <script>
     $(function() {
 
-    };
+        var hotel= {
+            room: "double",
+            service: "no",
+            smoking: "yes",
+            display:function(){
+                //clears span tag then adds the content
+                // if we don't have this line, it will run the code over and over
+                $("#spanProxyResults").html("");
+
+                $("#spanProxyResults").append("<br/> Room: "+ this.room+"<br/> Service: "
+                + this.service + "<br/> Smoking: " + this.smoking);
+            }
+
+        };
+
+        $("#btnPreviewProxy").click($.proxy(hotel,"display"));
+
+
+    });
 </script>
 
 
