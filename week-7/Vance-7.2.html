@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.4.2.js"></script>
+
+<style>
+jumbotron {
+    height: 200px;
+    width: 50%;
+    background-color: powderblue;
+}
+</style>
+</head>
+<body>
+<!-- Recreate Example 2 using a PersonViewModel with two fields and a fullName() computed function
+The output and functionality should mirror Example 2 (i.e., entering the person’s firstName should display an 
+input field for the person’s last name. Entering the person’s lastName should display a concatenated fullName value) -->
+
+<div role="main" class="jumbotron">
+	<br/>
+	<h1 style="padding:10px"> PersonViewModel </h1>
+	<div class="form-group">
+        <label for="txtName">First Name:</label>
+		<input type="text" data-bind="value:name" class="form-control" id="txtName"/>
+    </div>
+
+    <div data-bind="if:displayFirst">
+        <div class="form-group">
+            <label for="txtLast">Last Name:</label>
+            <input type="text" data-bind="value:last" class="form-control" id="txtLast">
+        </div>
+
+    </div>
+
+    <br/>
+
+    <div data-bind="if:last">
+        <h2>
+            <span id="nameOutput" class="alert-success" data-bind="text:fullName">
+            </span>
+        </h2>
+    </div> <br> <br>
+
+
+
+
+<script>
+
+function PersonViewModel() {
+    this.name = ko.observable("");
+    this.last = ko.observable("");
+
+    this.displayFirst=ko.pureComputed(function(){
+        return this.name();
+    }, this);
+
+    this.fullName = ko.computed(function() {
+        return this.name() + " " + this.last();    
+    }, this);
+}
+
+// Activates knockout.js
+ko.applyBindings(new PersonViewModel());
+</script>
+
+</body>
+</html>
