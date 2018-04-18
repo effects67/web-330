@@ -35,7 +35,7 @@
                     <h1 class="card-title">Employee List</h1>
                     <div class="card-text">
                         <div class="form-group row">
-                            <label for="txtEmployee" class="col-2 col-form-label">Employee:</label>
+                            <label for="txtEmployee" class="col-2 col-form-label">Add Employee:</label>
                             <div class="col-6">
                                 <input type="text" data-bind="value:nametoAdd, valueUpdate:'afterkeydown'"
                                 class="form-control" id="txtEmployee"/>
@@ -66,7 +66,6 @@
         this.add=function(){
             if((this.nametoAdd()!=="") && (this.employeeList.indexOf(this.nametoAdd()) <0)){
                 this.error("");
-
                 this.employeeList.push(this.nametoAdd());
             }
             else{
